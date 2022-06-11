@@ -4,10 +4,11 @@
  * Module dependencies.
  */
 
- var app = require('../app');
- var debug = require('debug')('projnotes-class-2022aa:server');
+ // var app = require('../app');
+import app from '../app';
+var debug = require('debug')('projnotes-class-2022aa:server');
  var http = require('http');
- 
+
  /**
   * Get port from environment and store in Express.
   */
