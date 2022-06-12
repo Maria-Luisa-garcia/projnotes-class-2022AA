@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "SET NODE_ENV=production node ./dist/bin/www",
-    "dev": "SET NODE_ENV=development babel-watch ./server/bin/www",
+    "dev": "babel-watch ./server/bin/www",
     "client:server": "SET NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
     "clean:server": "rm -rf dist",
     "clean:client": "rm -rf public/javascripts/bundle.js && rm -rf public/stylesheets/styles.css",
@@ -21,9 +21,10 @@
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "express-handlebars": "^5.3.2",
-    "hbs": "~4.0.4",
+    "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
-    "mongoose": "^6.3.6",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^6.0.5",
     "morgan": "~1.9.1",
     "rimraf": "^3.0.2",
     "webpack": "^5.70.0",
@@ -44,17 +45,16 @@
     "babel-watch": "^7.4.1",
     "core-js": "^3.11.1",
     "css-loader": "^5.2.4",
-    "eslint": "^8.14.0",
+    "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "mini-css-extract-plugin": "^1.6.0",
     "prettier": "^2.5.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
-   
   }
 }
