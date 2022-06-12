@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 // Preámbulo
 // Ayuda a manejar errores http
 import createError from 'http-errors';
@@ -14,6 +15,8 @@ import morgan from 'morgan';
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
+// Importando configurador de plantillas
+import templateEngineConfigurator from './config/templateEngine';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import aboutRouter from './routes/about';
@@ -61,8 +64,7 @@ if (nodeEnv === 'development') {
 }
 // Configuración del motor de plantillas (template Engine)
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+templateEngineConfigurator(app);
 // Todos los middlewares globales
 // van primero que cualquier otro middleware de la app
 app.use(morgan('dev', { stream: winston.stream }));
