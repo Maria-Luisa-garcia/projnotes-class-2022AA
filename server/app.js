@@ -27,6 +27,11 @@ import winston from './config/winston';
 // Permite la actualización dinamica de la página
 // Configuración
 import webpackConfig from '../webpack.dev.config';
+// Importando las variables de configuracion
+import configKeys from './config/configKeys';
+// Importando clase conectora a la base de datos
+import MongooseODM from './config/odm';
+
 // Aqui se crea la instancia de express
 // (req, res, next) => {... }
 const app = express();
@@ -61,6 +66,25 @@ if (nodeEnv === 'development') {
 } else {
   console.log(`✍ Ejecutando en modo producción ⚙⚙`);
 }
+
+// Conexion a la base de datos
+// Creando una instancia a la conexion de la DB
+const mongooseODM = new MongooseODM(configKeys.databaseUrl);
+// Ejecutar la conexion a la Bd
+// Crear una IIFE para crear un ambito asincrono
+// que me permita usar async await
+(async () => {
+  // Ejecutamos le metodo de conexion
+  const connectionResult = await mongooseODM.connect();
+  // Checamos si hay error
+  if (connectionResult) {
+    // Si conecto correctamente a la base de datos
+    winston.info('✅ Conexion a la BD exitosa 🤘');
+  } else {
+    winston.error('😱 No se conecto a la base de datos');
+  }
+})();
+
 // Configuración del motor de plantillas (template Engine)
 // view engine setup
 templateEngineConfigurator(app);
@@ -70,35 +94,28 @@ app.use(morgan('dev', { stream: winston.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 // Middleware de archivos estaticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
-
 // Registrando las rutas en la APP
 router.addRoutes(app);
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   // Registrando el error 404 en el log
   // winston.error(
   //   `404 - Not Found: ${req.method} ${req.originalUrl} : IP ${req.ip}`
   // );
-
   next(createError(404));
 });
-
 // error handler
 app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // Registramos el error en winston
   winston.error(
     `${err.status || 500} : ${err.message} 
     : ${req.method} ${req.originalUrl} : IP ${req.ip}`
   );
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
