@@ -21,8 +21,9 @@ const index = (req, res) => {
     author: 'Garcia Tellez Maria Luisa',
     emojie,
   };
-  res.render('index', viewModel);
+  res.render('home/indexView', viewModel);
 };
+
 // URL: Get /about
 const about = (req, res) => {
   res.render('home/aboutView', {
