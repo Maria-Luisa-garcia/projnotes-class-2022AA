@@ -11,7 +11,7 @@
     "build:s": "npm run clean:w && babel ./server --out-dir dist --copy-files",
     "build:client": "npm run clean:client && webpack --config ./webpack.config.js --mode production",
     "lint-server": "eslint ./server",
-    "clean-logs": "rimraf ./server/logs/*.log" 
+    "clean-logs": "rimraf ./server/logs/*.log"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
