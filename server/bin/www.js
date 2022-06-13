@@ -1,23 +1,29 @@
 #!/usr/bin/env node
+
 /**
  * Module dependencies.
  */
+
 import app from '@s/app';
 import Debug from 'debug';
 import http from 'http';
 
 // Importando nuestro logger
 import winston from '../config/winston';
+// IMportando el objeto de las llaves de configuracion
+import configKeys from '../config/configKeys';
 
 // Creando instancia del debugger
-const debug = Debug('projnotes-class-2022aa:server');
+const debug = Debug('projnotes-2022a:server');
 
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '3000');
+
+const port = normalizePort(configKeys.port || '5000');
 // app es una instnacia de ExpressJs[ ] [ NODE ]
 app.set('port', port);
+
 /**
  * Create HTTP server.
  */
@@ -44,14 +50,18 @@ function normalizePort(val) {
   }
   return false;
 }
+
 /**
  * Event listener for HTTP server "error" event.
  */
+
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
+
   const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
+
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
@@ -66,12 +76,14 @@ function onError(error) {
       throw error;
   }
 }
+
 /**
  * Event listener for HTTP server "listening" event.
  */
+
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
-  console.log(`✍ Servidor escuchando 🤖🦻...en ${app.get('port')}`);
+  winston.info(`Servidor escuchando 🤖🦻...en ${app.get('port')}`);
 }
