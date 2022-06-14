@@ -35,7 +35,7 @@ const debug = Debug('projnotes-2022a:server');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(configKeys.port || '5000');
+const port = normalizePort(configKeys.port || '3000');
 // app es una instnacia de ExpressJs[ ] [ NODE ]
 app.set('port', port);
 
