@@ -3,14 +3,14 @@
 // Lista los proyectos
 // GET /projects | GET /projects/index
 const index = (req, res) => {
-  res.send('Listando proyectos 🚧');
+  res.send('📃 Listando Proyectos Nuevos 📄');
   // TODO: Agregar codigo de listado de proyectos
 };
 
 // Agrega ideas de proyectos
 // GET /projects/add
 const add = (req, res) => {
-  res.send('Agreando ideas de proyectos 🚧');
+  res.send('Agregar nuevos productos');
   // TODO: Agregar codigo para agregar proyectos
 };
 
