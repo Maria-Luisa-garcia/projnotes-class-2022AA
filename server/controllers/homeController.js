@@ -31,8 +31,8 @@ const about = (req, res) => {
     email: 'L181130089@gamadero.tecnm.mx',
     url: 'https://github.com/Maria-Luisa-garcia/projnotes-class-2022AA',
     description:
-    'Aplicación que te permite registrar ideas de proyectos. PwpcII-2022A',
-  version: '0.0.alpha',
+      'Los servicios que proporciona una farmacia han evolucionado con el tiempo de forma notable. Registro de productos, para la mejora del lugar',
+    version: '2022',
   });
 };
 

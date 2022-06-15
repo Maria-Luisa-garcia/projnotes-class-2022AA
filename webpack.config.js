@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   // 1. Especificar el archivo de entrada
   entry: "./client/index.js",
-   // 2. Especificar el archivo de salida
+  // 2. Especificar el archivo de salida
   output: {
     // 2.1 Ruta ansoluta de la salida
     path: path.resolve(__dirname, "public"),
@@ -44,12 +44,12 @@ module.exports = {
             },
           },
         ],
-  },
-// 3.2 Reglas para Css
-{
-  test: /\.css$/,
-  use: [MiniCssExtractPlugin.loader, "css-loader"],
- },
+      },
+      // 3.2 Reglas para Css
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
     ],
   },
   // 4. Plugins
